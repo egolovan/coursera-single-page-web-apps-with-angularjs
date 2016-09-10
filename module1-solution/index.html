@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles/bootstrap.min.css">
     <style>
+      [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak { display: none !important; }
       .message { font-size: 1.3em; font-weight: bold; }
       .success .message { color: green; }
       .error .message { color: red; }
       .success input#lunch-menu { border: 1px solid green; }
       .error input#lunch-menu { border: 1px solid red; }
+
     </style>
   </head>
 <body ng-app="LunchCheck">
@@ -25,7 +27,7 @@
          <div class="form-group">
              <button class="btn btn-default" ng-click="lunch_check()">Check If Too Much</button>
          </div>
-         <div class="form-group message">
+         <div class="form-group message" ng-cloak>
            <!-- Your message can go here. -->
            {{lunch_message}}
          </div>
