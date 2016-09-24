@@ -39,6 +39,8 @@ function ShoppingListCheckOffService() {
   service.checkItem = function (itemIdex) {
   	items_bought.push(items_to_buy[itemIdex])
   	items_to_buy.splice(itemIdex, 1);
+
+  	if (!items_to_buy) console.log("Good luck, man!")
   };
 
   service.getToBuyItems = function () {
