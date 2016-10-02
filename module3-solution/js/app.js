@@ -35,6 +35,10 @@ function FoundItemsDirective() {
 
 function FoundItemsDirectiveController() {
   var list = this;
+
+  list.isNothingFound = function () {
+    return false;
+  };
 }
 
 MenuSearchService.$inject = ['$http', 'ApiBasePath'];
@@ -54,7 +58,7 @@ function MenuSearchService($http, ApiBasePath) {
         if (searchTerm) {
           for (var i = 0; i < allItems.length; i++) {
             var description = allItems[i].description;
-            if (description.toLowerCase().indexOf(searchTerm) !== -1) {
+            if (description.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1) {
               foundItems.push(allItems[i]);
             }
           }
