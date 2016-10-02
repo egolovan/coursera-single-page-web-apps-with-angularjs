@@ -5,7 +5,17 @@ angular.module('NarrowItDownApp', [])
 .controller('NarrowItDownController', NarrowItDownController)
 .service('MenuSearchService', MenuSearchService)
 .directive('foundItems', FoundItemsDirective)
+.directive('itemsLoaderIndicator', ItemsLoaderIndicatorDirective)
 .constant('ApiBasePath', "https://davids-restaurant.herokuapp.com");
+
+function ItemsLoaderIndicatorDirective() {
+  var ddo = {
+    templateUrl: 'itemsLoaderIndicator.html',
+    restrict: "E"
+  };
+
+  return ddo;
+}
 
 function FoundItemsDirective() {
   var ddo = {
@@ -65,9 +75,15 @@ function NarrowItDownController(MenuSearchService) {
 
   narrow_ctrl.searchClicked = false;
   narrow_ctrl.found = [];
+  narrow_ctrl.loading = false;
 
   narrow_ctrl.search = function () {
+    narrow_ctrl.loading = true;
+
     MenuSearchService.getMatchedMenuItems(narrow_ctrl.searchTerm)
+    .finally(function (result) {
+      narrow_ctrl.loading = false;
+    })
     .then(function (result) {
       narrow_ctrl.searchClicked = true;
       narrow_ctrl.found = result;
