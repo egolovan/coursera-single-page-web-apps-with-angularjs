@@ -35,10 +35,6 @@ function FoundItemsDirective() {
 
 function FoundItemsDirectiveController() {
   var list = this;
-
-  list.isNothingFound = function () {
-    return false;
-  };
 }
 
 MenuSearchService.$inject = ['$http', 'ApiBasePath'];
