@@ -51,6 +51,9 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
                   console.log("Something went terribly wrong.");
                 });
             }]
+    },
+    params: {
+      categorySn: null
     }
   });
 }
