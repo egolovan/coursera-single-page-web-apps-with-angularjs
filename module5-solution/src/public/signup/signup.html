@@ -1,0 +1,65 @@
+<div class="container">
+  <h2 id="menu-categories-title" class="text-center">Sign Up</h2>
+  <div class="text-center">
+    
+  </div>
+
+  <form name='signupForm' class='signupForm' novalidate>
+
+	First name:<br />
+    <input type="text" name="first_name" placeholder="First name"
+      ng-model="signupCtrl.user.first_name"
+      required>
+      <span
+        ng-if="(signupForm.first_name.$error.required) && signupForm.first_name.$touched">
+        First name is required
+      </span>
+      <br><br />
+
+	Last Name:<br />
+    <input type="text" name="last_name" placeholder="Last name"
+      ng-model="signupCtrl.user.last_name"
+      required>
+      <span
+        ng-if="(signupForm.last_name.$error.required) && signupForm.last_name.$touched">
+        Last name is required
+      </span>
+      <br><br />
+
+    Email address:<br />
+    <input type="email" name="email" placeholder="Email"
+      ng-model="signupCtrl.user.email"
+      required>
+      <span ng-if="signupForm.email.$invalid && signupForm.email.$touched">
+        Must be a valid email address: handle@domain format
+      </span>
+      <br><br />
+
+    Phone number:<br />
+    <input type="text" name="phone" placeholder="Phone ###-###-####"
+      ng-model="signupCtrl.user.phone"
+      required
+      pattern="(\d{3})-(\d{3})-(\d{4})">
+      <span ng-if="signupForm.phone.$invalid && signupForm.phone.$touched">
+        Phone must be in the format ###-###-####
+      </span>
+      <br><br />
+
+    Menu number:<br />
+    <input type="text" name="menu_number" placeholder="Menu number"
+      ng-model="signupCtrl.user.menu_number"
+      required>
+      <span ng-if="signupCtrl.menu_number_invalid">
+        Menu number not found
+      </span>
+      <br><br />
+
+    <button
+      ng-disabled="signupForm.$invalid"
+      ng-click="signupCtrl.submit()">Sign Up</button>
+      <br><br />
+
+      {{signupCtrl.message}}
+  </form>
+
+</div>

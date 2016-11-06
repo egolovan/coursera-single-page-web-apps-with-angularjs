@@ -1,0 +1,22 @@
+<div class="container">
+  <h2 id="menu-categories-title" class="text-center">My Info</h2>
+  <div class="text-center">
+    <p ng-if="!myinfoCtrl.user || !myinfoCtrl.user.email">Not Signed Up Yet. <a ui-sref="public.signup">Sign up Now!</a></p>
+  </div>
+
+    <p ng-if="myinfoCtrl.user && myinfoCtrl.user.email">
+
+    Email: {{myinfoCtrl.user.email}}<br />
+    First Name: {{myinfoCtrl.user.first_name}}<br />
+    Last Name: {{myinfoCtrl.user.last_name}}<br />
+    Phone: {{myinfoCtrl.user.phone}}<br /><br />
+
+    Menu Item:<br />
+    <img ng-if="myinfoCtrl.user.menu.image_present" class="img-responsive" width="250" height="150" ng-src="{{myinfoCtrl.basePath}}/images/{{myinfoCtrl.user.menu.short_name}}.jpg" alt="{{myinfoCtrl.user.menuItem.name}}">
+    Name: {{myinfoCtrl.user.menu.name}}<br />
+    Description: {{myinfoCtrl.user.menu.description}}<br />
+    Price: {{myinfoCtrl.user.menu.price_small}}<br />
+
+    </p>
+
+</div>
